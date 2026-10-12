@@ -35,6 +35,12 @@ RoboCompanion — проект автономного робота, которы
 
 ### Основные команды Python
 
+Создать виртуальное окружение
+
+```powershell
+python -m venv .venv 
+```
+
 Активировать виртуальное окружение в PowerShell:
 
 ```powershell
@@ -90,6 +96,8 @@ RoboCompanion/
 ├── platformio.ini
 └── requirements.txt
 ```
+
+<img width="1492" height="814" alt="image" src="https://github.com/user-attachments/assets/5777f9f0-449d-42c8-84cb-03fade2c8d53" />
 
 ### Назначение элементов
 
@@ -176,6 +184,7 @@ Project Tasks
 ```
 
 Названия и расположение отдельных пунктов могут немного отличаться в зависимости от версии PlatformIO.
+
 
 ### Разница между Build, Upload и Clean
 
@@ -274,6 +283,51 @@ Serial.write()
 
 ```text
 RoboCompanion ready!
+```
+
+Этот код лежит в файле `main.cpp` прошивка для платы
+
+```c++
+#include <Arduino.h>
+
+String command = "";
+
+void setup() {
+    Serial.begin(9600);
+    pinMode(LED_BUILTIN, OUTPUT);
+
+    Serial.println("RoboCompanion ready!");
+}
+
+void loop() {
+    if (Serial.available() > 0) {
+        char symbol = Serial.read();
+
+        if (symbol == '\n') {
+            command.trim();
+
+            if (command == "LED_ON") {
+                digitalWrite(LED_BUILTIN, HIGH);
+                Serial.println("LED is ON");
+            }
+            else if (command == "LED_OFF") {
+                digitalWrite(LED_BUILTIN, LOW);
+                Serial.println("LED is OFF");
+            }
+            else if (command == "PING") {
+                Serial.println("PONG");
+            }
+            else {
+                Serial.println("Unknown command");
+            }
+
+            command = "";
+        }
+        else {
+            command += symbol;
+        }
+    }
+}
 ```
 
 ### Как обрабатываются команды
