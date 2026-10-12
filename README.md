@@ -8,4 +8,4 @@
 
 ## Проекты
 
-- [RoboCompanion — конспект проекта](projects/RoboCompanion/RoboCompanion.md)
+- [RoboCompanion — конспект проекта](https://github.com/eerokhin/ARDUINO/blob/main/projects/RoboCompanion/RoboCompanion.md)
