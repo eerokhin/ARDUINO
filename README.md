@@ -4,7 +4,7 @@
 
 ## Теория
 
-- [Занятие № 1 — Основы Arduino](lessons/lesson-01-arduino-basics.md)
+- [Занятие № 1 — Основы Arduino](https://github.com/eerokhin/ARDUINO/blob/main/arduino-learning-notes/lessons/lesson-01-arduino-basics.md)
 
 ## Проекты
 
